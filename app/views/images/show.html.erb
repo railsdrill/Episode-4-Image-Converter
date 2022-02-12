@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @image.format %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @image.size %>
+</p>
+
+<%= link_to "Download file", Rails.application.routes.url_helpers.rails_representation_url(@image.avatar.variant(format: @image.format, resize: @image.size,).processed, only_path: true, disposition: 'attachment') %>
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>
+<%= image_tag @image.avatar.variant(format: @image.format, resize: @image.size) %>
